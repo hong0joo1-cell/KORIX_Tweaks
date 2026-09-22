@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="KORIX_Tweaks.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="KORIX Tweaks" Width="1280" Height="760" MinWidth="960" MinHeight="600" WindowStartupLocation="CenterScreen" Foreground="#FFFFFFFF" FontFamily="Segoe UI" UseLayoutRounding="True" SnapsToDevicePixels="True" xmlns:korix_tweaks="clr-namespace:KORIX_Tweaks;assembly=KORIX_Tweaks" Opacity="1">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#06131E" Offset="0" />
+            <GradientStop Color="#0A2340" Offset="0.5" />
+            <GradientStop Color="#0D2F3B" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#001B2B" />
+        <Setter Property="Foreground" Value="#A5D8FF" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="8,3" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+          <Setter.Value>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <TranslateTransform Y="0" />
+            </TransformGroup>
+          </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+              <Border x:Name="buttonBorder" Background="{TemplateBinding Background}" BorderBrush="#1EC7C7" BorderThickness="0,0,0,0" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Trigger.EnterActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#123E5D" Duration="0:0:0.14" />
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" To="#E6FBFF" Duration="0:0:0.14" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.02" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.02" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="-2" Duration="0:0:0.12" />
+                </Storyboard>
+              </BeginStoryboard>
+            </Trigger.EnterActions>
+            <Trigger.ExitActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#001B2B" Duration="0:0:0.14" />
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" To="#A5D8FF" Duration="0:0:0.14" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="0" Duration="0:0:0.12" />
+                </Storyboard>
+              </BeginStoryboard>
+            </Trigger.ExitActions>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+
+      <Style x:Key="ActionButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#0E2E45" />
+        <Setter Property="Foreground" Value="#EAFBFF" />
+        <Setter Property="BorderBrush" Value="#31C9C7" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Padding" Value="18,0" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FrameworkElement.Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0,6" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+          <Setter.Value>
+            <TransformGroup>
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+              <TranslateTransform Y="0" />
+            </TransformGroup>
+          </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+              <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Trigger.EnterActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#1A6C86" Duration="0:0:0.15" />
+                  <ColorAnimation Storyboard.TargetProperty="(Button.BorderBrush).(SolidColorBrush.Color)" To="#7AE7DE" Duration="0:0:0.15" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.02" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.02" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="-3" Duration="0:0:0.12" />
+                </Storyboard>
+              </BeginStoryboard>
+            </Trigger.EnterActions>
+            <Trigger.ExitActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#0E2E45" Duration="0:0:0.15" />
+                  <ColorAnimation Storyboard.TargetProperty="(Button.BorderBrush).(SolidColorBrush.Color)" To="#31C9C7" Duration="0:0:0.15" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.12" />
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="0" Duration="0:0:0.12" />
+                </Storyboard>
+              </BeginStoryboard>
+            </Trigger.ExitActions>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+
+      <Style x:Key="CardStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background">
+          <Setter.Value>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+              <GradientStop Color="#102A3C" Offset="0" />
+              <GradientStop Color="#0D2238" Offset="1" />
+            </LinearGradientBrush>
+          </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#2CC9C3" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Margin" Value="0,0,14,14" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+          <Setter.Value>
+            <TranslateTransform Y="0" />
+          </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+          <Setter.Value>
+            <DropShadowEffect BlurRadius="16" ShadowDepth="0" Color="#1BB9C9" Opacity="0.18" />
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Trigger.EnterActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)" To="-4" Duration="0:0:0.18" />
+                  <DoubleAnimation Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)" To="0.34" Duration="0:0:0.18" />
+                </Storyboard>
+              </BeginStoryboard>
+            </Trigger.EnterActions>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Background" Value="#071C2B"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Width" Value="8"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ScrollBar}">
+              <Grid x:Name="Bg" Background="{TemplateBinding Background}">
+                <Track x:Name="PART_Track" IsDirectionReversed="True" Orientation="Vertical">
+                  <Track.Thumb>
+                    <Thumb>
+                      <Thumb.Template>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+                          <Border Background="#35D1D0" CornerRadius="4" />
+                        </ControlTemplate>
+                      </Thumb.Template>
+                    </Thumb>
+                  </Track.Thumb>
+                </Track>
+              </Grid>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid>
+    <Grid.Background>
+      <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#0A233A" Offset="0" />
+        <GradientStop Color="#0C3653" Offset="0.35" />
+        <GradientStop Color="#0B2E46" Offset="1" />
+      </LinearGradientBrush>
+    </Grid.Background>
+
+    <Viewbox Stretch="Fill" IsHitTestVisible="False" Panel.ZIndex="0">
+    <Canvas Name="OceanCanvas" Width="1280" Height="760">
+      <Path Name="BackWave" Fill="#0F4A68" Opacity="0.26" Stroke="#53D7CF" StrokeThickness="1.2">
+        <Path.RenderTransform>
+          <TranslateTransform X="0" />
+        </Path.RenderTransform>
+        <Path.Data>
+          <PathGeometry>
+            <PathFigure StartPoint="0,420">
+              <BezierSegment Point1="120,360" Point2="260,470" Point3="420,410" />
+              <BezierSegment Point1="560,360" Point2="700,500" Point3="860,440" />
+              <BezierSegment Point1="1030,390" Point2="1170,500" Point3="1280,430" />
+              <LineSegment Point="1280,760"/>
+              <LineSegment Point="0,760"/>
+              <LineSegment Point="0,420"/>
+            </PathFigure>
+          </PathGeometry>
+        </Path.Data>
+      </Path>
+      <Path Name="MiddleWave" Fill="#0F6A86" Opacity="0.18" Stroke="#79F0E7" StrokeThickness="1.0">
+        <Path.RenderTransform>
+          <TranslateTransform X="0" />
+        </Path.RenderTransform>
+        <Path.Data>
+          <PathGeometry>
+            <PathFigure StartPoint="0,520">
+              <BezierSegment Point1="140,470" Point2="290,560" Point3="440,510" />
+              <BezierSegment Point1="620,460" Point2="760,590" Point3="930,530" />
+              <BezierSegment Point1="1080,490" Point2="1200,580" Point3="1280,545" />
+              <LineSegment Point="1280,760"/>
+              <LineSegment Point="0,760"/>
+              <LineSegment Point="0,520"/>
+            </PathFigure>
+          </PathGeometry>
+        </Path.Data>
+      </Path>
+      <Path Name="FrontWave" Fill="#1DB6D5" Opacity="0.12" Stroke="#9AF3FF" StrokeThickness="1.2">
+        <Path.RenderTransform>
+          <TranslateTransform X="0" />
+        </Path.RenderTransform>
+        <Path.Data>
+          <PathGeometry>
+            <PathFigure StartPoint="0,600">
+              <BezierSegment Point1="170,560" Point2="340,660" Point3="520,610" />
+              <BezierSegment Point1="700,560" Point2="860,660" Point3="1040,620" />
+              <BezierSegment Point1="1160,590" Point2="1225,660" Point3="1280,640" />
+              <LineSegment Point="1280,760"/>
+              <LineSegment Point="0,760"/>
+              <LineSegment Point="0,600"/>
+            </PathFigure>
+          </PathGeometry>
+        </Path.Data>
+      </Path>
+      <Ellipse Name="NeonGlow" Width="200" Height="120" Canvas.Left="1000" Canvas.Top="80" Fill="#7FF9FF" Opacity="0.14">
+        <Ellipse.RenderTransform>
+          <TranslateTransform X="0" Y="0" />
+        </Ellipse.RenderTransform>
+      </Ellipse>
+      <Ellipse Width="120" Height="60" Canvas.Left="1060" Canvas.Top="140" Fill="#B9FFFF" Opacity="0.18" />
+    </Canvas>
+    </Viewbox>
+
+    <Grid Panel.ZIndex="1">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="230" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Border Grid.Column="0" Background="#0A111F" BorderBrush="#748adb" BorderThickness="0,0,1,0">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="110" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="24,0">
+          <TextBlock Text="KORIX" FontSize="27" FontWeight="Bold" Foreground="#FFFFFFFF" />
+          <TextBlock Text="TWEAKS" FontSize="11" FontWeight="SemiBold" Foreground="#dbd674" Margin="2,2,0,0" />
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+          <StackPanel>
+          <!-- 메뉴 글자는 짧고 한눈에 보이게 적어둠. 재이야 이거보면 레전드 기술 가르쳐줘 -->
+            <Button Name="HomeButton" Content="⌂   홈" Style="{StaticResource MenuButtonStyle}" Click="HomeButton_Click" />
+            <Button Name="TweaksButton" Content="⚡   성능 최적화" Style="{StaticResource MenuButtonStyle}" Click="TweaksButton_Click" />
+            <Button Name="FortniteButton" Content="🎮   포트나이트" Style="{StaticResource MenuButtonStyle}" Click="FortniteButton_Click" />
+            <Button Name="PowerButton" Content="◉   전원 관리" Style="{StaticResource MenuButtonStyle}" Click="PowerButton_Click" />
+            <Button Name="CleanerButton" Content="♲   시스템 정리" Style="{StaticResource MenuButtonStyle}" Click="CleanerButton_Click" />
+            <Button Name="MonitorButton" Content="▣   시스템 모니터" Style="{StaticResource MenuButtonStyle}" Click="MonitorButton_Click" />
+            <Button Name="UtilityButton" Content="⚙   Windows 도구" Style="{StaticResource MenuButtonStyle}" Click="UtilityButton_Click" />
+            <Button Name="SettingsButton" Content="☷   설정" Style="{StaticResource MenuButtonStyle}" Click="SettingsButton_Click" />
+          </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="2" Margin="20,0" VerticalAlignment="Center">
+          <TextBlock Text="KORIX Tweaks" Foreground="#5E6D82" FontSize="11" />
+          <TextBlock Text="성능 관리 도구" Foreground="#39475C" FontSize="10" Margin="0,3,0,0" />
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Grid Column="1" Panel.ZIndex="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="86" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Border Grid.Row="0" Background="#0A111F" BorderBrush="#172238" BorderThickness="0,0,0,1">
+        <Grid Margin="28,0">
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Name="PageTitleText" Text="홈" FontSize="24" FontWeight="Bold" Foreground="#FFFFFFFF" />
+            <TextBlock Name="CurrentPageText" Text="KORIX 성능 관리" FontSize="12" Foreground="#a374db" Margin="0,5,0,0" />
+          </StackPanel>
+          <TextBlock Name="StatusText" Text="준비됨" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#a374db" FontSize="12" />
+        </Grid>
+      </Border>
+      <Grid Row="1" Margin="28">
+        <Grid Name="HomePanel">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Name="PageContentText" Text="시스템 상태를 확인하고 성능을 최적화하세요." FontSize="15" Foreground="#a374db" Margin="0,0,0,22" />
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="CPU" Foreground="#748adb" FontSize="12" />
+                    <TextBlock Name="CpuText" Text="CPU 확인 중" FontSize="17" FontWeight="SemiBold" Margin="0,8,0,4" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+                    <TextBlock Text="사용량" Foreground="#748adb" FontSize="11" />
+                    <TextBlock Name="CpuPercentText" Text="0%" FontSize="25" FontWeight="Bold" Margin="0,4,0,0" />
+                    <TextBlock Name="CpuTempText" Text="온도: 확인 안 됨" Foreground="#748adb" FontSize="11" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="GPU" Foreground="#748adb" FontSize="12" />
+                    <TextBlock Name="GpuText" Text="GPU 확인 중" FontSize="17" FontWeight="SemiBold" Margin="0,8,0,4" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+                    <TextBlock Text="사용량" Foreground="#748adb" FontSize="11" />
+                    <TextBlock Name="GpuPercentText" Text="0%" FontSize="25" FontWeight="Bold" Margin="0,4,0,0" />
+                    <TextBlock Name="GpuTempText" Text="온도: 확인 안 됨" Foreground="#748adb" FontSize="11" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="RAM" Foreground="#748adb" FontSize="12" />
+                    <TextBlock Name="RamText" Text="메모리 확인 중..." FontSize="17" FontWeight="SemiBold" Margin="0,8,0,4" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+                    <TextBlock Text="사용량" Foreground="#748adb" FontSize="11" />
+                    <TextBlock Name="RamPercentText" Text="0%" FontSize="25" FontWeight="Bold" Margin="0,4,0,10" />
+                    <ProgressBar Name="RamProgressBar" Height="7" Minimum="0" Maximum="100" Value="0" />
+                    <TextBlock Name="RamTempText" Text="메모리 상태" Foreground="#748adb" FontSize="11" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+              </Grid>
+              <TextBlock Text="빠른 최적화" FontSize="18" FontWeight="SemiBold" Margin="0,18,0,10" />
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="⚡ FPS 최적화  [주의]" Style="{StaticResource ActionButtonStyle}" Margin="0,0,7,0" Click="FPSBoosterButton_Click" />
+                <Button Grid.Column="1" Content="🎮 게임 모드  [주의]" Style="{StaticResource ActionButtonStyle}" Margin="7,0" Click="GameModeButton_Click" />
+                <Button Grid.Column="2" Content="⚡ 입력 지연 최적화  [주의]" Style="{StaticResource ActionButtonStyle}" Margin="7,0" Click="InputDelayButton_Click" />
+                <Button Grid.Column="3" Content="🔥 프로세스 정리  [높음]" Style="{StaticResource ActionButtonStyle}" Margin="7,0,0,0" Click="ProcessOptimizerButton_Click" />
+              </Grid>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="TweaksPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="Windows 성능 최적화" FontSize="21" FontWeight="Bold" Margin="0,0,0,5" />
+              <TextBlock Text="Windows 성능을 위한 기본 최적화" Foreground="#748adb" Margin="0,0,0,20" />
+              <TextBlock Text="위험도: [안전] 정보·폴더 열기  [주의] 설정 변경  [높음] 네트워크·프로세스 변경" Foreground="#D8E6F3" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,14" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="성능 최적화 도구" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="⚡ FPS 부스터  [주의]" Style="{StaticResource ActionButtonStyle}" Click="FPSBoosterButton_Click" />
+                  <Button Content="🎮 게임 모드 켜기  [주의]" Style="{StaticResource ActionButtonStyle}" Click="GameModeButton_Click" />
+                  <Button Content="⚡ 입력 지연 최적화  [주의]" Style="{StaticResource ActionButtonStyle}" Click="InputDelayButton_Click" />
+                  <Button Content="🔥 프로세스 최적화  [높음]" Style="{StaticResource ActionButtonStyle}" Click="ProcessOptimizerButton_Click" />
+                  <Button Content="🧹 임시 파일 정리  [주의]" Style="{StaticResource ActionButtonStyle}" Click="TempCleanerButton_Click" />
+                  <Button Content="🌐 DNS 캐시 초기화  [주의]" Style="{StaticResource ActionButtonStyle}" Click="DNSButton_Click" />
+                  <Button Content="🔄 네트워크 초기화  [높음]" Style="{StaticResource ActionButtonStyle}" Click="NetworkResetButton_Click" />
+                  <Button Content="Ping 최적화  [높음]" Style="{StaticResource ActionButtonStyle}" Margin="0,8,0,0" Click="PingOptimizeButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="FortnitePanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="포트나이트 최적화" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="포트나이트 성능 및 설정 관리" Foreground="#748adb" Margin="0,5,0,20" />
+              <TextBlock Text="위험도: [안전] 설정 열기  [주의] 그래픽 설정 변경  [높음] Windows·프로세스 변경" Foreground="#D8E6F3" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,14" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="포트나이트 도구" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="🎮 경쟁 성능 적용  [높음·백업 후]" Style="{StaticResource ActionButtonStyle}" Click="FortniteOptimizeButton_Click" />
+                  <Button Content="📁 포트나이트 설정 열기  [안전]" Style="{StaticResource ActionButtonStyle}" Click="FortniteConfigButton_Click" />
+                  <Button Content="↩ 포트나이트 설정 복원  [주의]" Style="{StaticResource ActionButtonStyle}" Click="RestoreFortniteSettingsButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="PowerPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="전원 관리" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="Windows 전원 관리 설정" Foreground="#65768F" Margin="0,5,0,20" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="전원 계획" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="⚡ 고성능 전원 모드  [주의]" Style="{StaticResource ActionButtonStyle}" Click="HighPerformanceButton_Click" />
+                  <Button Content="🚀 최고 성능 전원 모드  [높음]" Style="{StaticResource ActionButtonStyle}" Click="UltimatePerformanceButton_Click" />
+                  <Button Content="↩ 균형 전원 복원  [주의]" Style="{StaticResource ActionButtonStyle}" Click="RestoreDefaultsButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="CleanerPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="시스템 정리" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="불필요한 임시 파일 정리" Foreground="#65768F" Margin="0,5,0,20" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="정리 도구" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="🧹 임시 파일 정리  [주의]" Style="{StaticResource ActionButtonStyle}" Click="TempCleanerButton_Click" />
+                  <Button Content="📁 임시 폴더 열기  [안전]" Style="{StaticResource ActionButtonStyle}" Click="OpenTempFolderButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="MonitorPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="시스템 모니터" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="현재 시스템 상태" Foreground="#65768F" Margin="0,5,0,20" />
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="CPU" Foreground="#748adb" />
+                    <TextBlock Name="MonitorCpuText" Text="0%" FontSize="32" FontWeight="Bold" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="GPU" Foreground="#748adb" />
+                    <TextBlock Name="MonitorGpuText" Text="0%" FontSize="32" FontWeight="Bold" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource CardStyle}">
+                  <StackPanel>
+                    <TextBlock Text="RAM" Foreground="#748adb" />
+                    <TextBlock Name="MonitorRamText" Text="0%" FontSize="32" FontWeight="Bold" Margin="0,8,0,0" />
+                  </StackPanel>
+                </Border>
+              </Grid>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="UtilityPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="Windows 도구" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="Windows 시스템 도구" Foreground="#748adb" Margin="0,5,0,20" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <Button Content="▣ 작업 관리자  [안전]" Style="{StaticResource ActionButtonStyle}" Click="TaskManagerButton_Click" />
+                  <Button Content="⚙ 장치 관리자  [안전]" Style="{StaticResource ActionButtonStyle}" Click="DeviceManagerButton_Click" />
+                  <Button Content="▤ 시스템 정보  [안전]" Style="{StaticResource ActionButtonStyle}" Click="SystemInformationButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+        <Grid Name="SettingsPanel" Visibility="Collapsed">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock Text="설정" FontSize="21" FontWeight="Bold" />
+              <TextBlock Text="KORIX Tweaks 설정" Foreground="#748adb" Margin="0,5,0,20" />
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="응용 프로그램" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <TextBlock Text="KORIX Tweaks" Foreground="#748adb" FontSize="13" />
+                  <TextBlock Text="성능 유틸리티" Foreground="#748adb" FontSize="11" Margin="0,4,0,10" />
+                  <TextBlock Text="설정을 변경하기 전에 백업을 만듭니다. 문제가 생기면 아래 복원 기능을 사용하세요." Foreground="#C9D6E5" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,12" />
+                  <Button Content="⚠ 현재 설정 백업  [안전]" Style="{StaticResource ActionButtonStyle}" Click="CreateBackupButton_Click" />
+                  <Button Content="↩ Windows 설정 복원  [주의]" Style="{StaticResource ActionButtonStyle}" Click="RestoreWindowsSettingsButton_Click" />
+                  <Button Content="↩ 기본 전원 설정 복원  [주의]" Style="{StaticResource ActionButtonStyle}" Click="RestoreDefaultsButton_Click" />
+                </StackPanel>
+              </Border>
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="빠른 프로필" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="⚡ 일반 성능 프로필 적용" Style="{StaticResource ActionButtonStyle}" Click="StandardProfileButton_Click" />
+                  <Button Content="🎮 포트나이트 경쟁 프로필 적용  [높음]" Style="{StaticResource ActionButtonStyle}" Click="CompetitiveProfileButton_Click" />
+                  <Button Content="↩ 마지막 백업으로 전체 복원  [주의]" Style="{StaticResource ActionButtonStyle}" Click="RestoreProfileButton_Click" />
+                </StackPanel>
+              </Border>
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="실시간 상태" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <TextBlock Name="AdminStatusText" Text="관리자 권한: 확인 중" Foreground="#C9D6E5" Margin="0,3" />
+                  <TextBlock Name="FortniteStatusText" Text="포트나이트: 확인 중" Foreground="#C9D6E5" Margin="0,3" />
+                  <TextBlock Name="PowerStatusText" Text="전원 모드: 확인 중" Foreground="#C9D6E5" Margin="0,3" />
+                  <TextBlock Name="NetworkStatusText" Text="네트워크: 확인 중" Foreground="#C9D6E5" Margin="0,3,0,10" />
+                  <CheckBox Name="AutoMonitorCheckBox" Content="포트나이트 자동 감시 사용" IsChecked="True" Foreground="#EAFBFF" Checked="AutoMonitorCheckBox_Changed" Unchecked="AutoMonitorCheckBox_Changed" />
+                </StackPanel>
+              </Border>
+              <Border Style="{StaticResource CardStyle}">
+                <StackPanel>
+                  <TextBlock Text="백업 및 기록" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,10" />
+                  <Button Content="📁 백업 폴더 열기  [안전]" Style="{StaticResource ActionButtonStyle}" Click="OpenBackupFolderButton_Click" />
+                  <Button Content="▤ 작업 로그 내보내기  [안전]" Style="{StaticResource ActionButtonStyle}" Click="ExportLogButton_Click" />
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+      </Grid>
+    </Grid>
+    </Grid>
+    <Grid Name="SplashOverlay" Panel.ZIndex="10" Background="#071B2B" Opacity="1">
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Width="112" Height="112" CornerRadius="24" Background="#07111F" BorderBrush="#2CD3CC" BorderThickness="1" Padding="8" HorizontalAlignment="Center" Margin="0,0,0,18">
+          <Image Source="/KORIX_Tweaks;component/assets/KORIX-rounded.png" Stretch="Uniform" />
+        </Border>
+        <TextBlock Text="KORIX" FontSize="38" FontWeight="Bold" Foreground="#E8FFFF" HorizontalAlignment="Center" />
+        <TextBlock Text="TWEAKS" FontSize="13" FontWeight="SemiBold" Foreground="#55E2D5" HorizontalAlignment="Center" Margin="0,6,0,8" />
+        <TextBlock Name="LoadingText" Text="시스템을 준비하고 있습니다..." FontSize="12" Foreground="#A5D8FF" HorizontalAlignment="Center" Margin="0,0,0,16" />
+        <ProgressBar Width="220" Height="4" IsIndeterminate="True" Foreground="#38D6CD" Background="#12394B" />
+      </StackPanel>
+    </Grid>
+  </Grid>
+</Window>
